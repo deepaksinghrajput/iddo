@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image/singh.jpg">
+    <title>Photoshop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css">
+    <style>
+        *,::before,::after{ margin: 0; box-sizing: border-box; }
+a{ text-decoration: none; }
+ul{ list-style: none; padding: 0; }
+button{ padding: 0; cursor: pointer;}
+:disabled{ cursor:not-allowed;}
+img{ vertical-align: bottom;}
+iframe{ border: none;}
+
+@font-face{
+    font-family: istok;
+    font-style: normal;
+    font-weight: 400;
+    src: url(Istok_Web/IstokWeb-Regular.ttf);
+    font-display: swap;
+}
+
+@font-face{
+    font-family: istok;
+    font-style: italic;
+    font-weight: 400;
+    src: url(Istok_Web/IstokWeb-Italic.ttf);
+    font-display: swap;
+}
+
+@font-face{
+    font-family: istok;
+    font-style: italic;
+    font-weight: 700;
+    src: url(Istok_Web/IstokWeb-BoldItalic.ttf);
+    font-display: swap;
+}
+
+body{
+    font-family: Istok,sans-serif;
+    font-weight: 100;
+}
+
+.pr{
+    font-weight: 400;
+}
+
+.container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+/* 12 Grids  */
+.row{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 -15px;
+}
+
+.row [class^="col"]{
+    flex: 1 0 auto;
+    padding: 0 15px;
+ }
+
+.row .col-1{
+    flex-basis: 8.33%;
+    max-width: 8.33%;
+}
+.row .col-2{
+    flex-basis: 16.66%;
+    max-width: 16.66%;
+}
+.row .col-3{
+    flex-basis: 25%;
+    max-width: 25%;
+}
+.row .col-4{
+    flex-basis: 33.33%;
+    max-width: 33.33%;
+}
+.row .col-5{
+    flex-basis: 41.66%;
+    max-width: 41.66%;
+}
+.row .col-6{
+    flex-basis: 50%;
+    max-width: 50%;
+}
+.row .col-7{
+    flex-basis: 58.33%;
+    max-width: 58.33%;
+}
+.row .col-8{
+    flex-basis: 66.66%;
+    max-width: 66.66%;
+}
+.row .col-9{
+    flex-basis: 75%;
+    max-width: 75%;
+}
+.row .col-10{
+    flex-basis: 83.33%;
+    max-width: 83.33%;
+}
+.row .col-11{
+    flex-basis: 91.66%;
+    max-width: 91.66%;
+}
+.row .col-12{
+    flex-basis: 100%;
+    max-width: 100%;
+}
+.flex{ display: flex;}
+.align-center{ align-items: center;}
+.justify-right{ justify-content: right;}
+
+
+.wrap-1{ background: #000; color: #fff;}
+header h1{ font-size: 30px;}
+header h1 a{ color: inherit; line-height: 80px; display: inline-block;}
+.nav{ background: #222; padding: 5px; }
+  .nav > ul{ display: flex; }
+  .nav ul li{ margin-right: 10px;  }
+  .nav ul li a{ display: block; padding: 6px 12px; color: #bbb; }
+  .nav ul li:hover > a{ color: #fff;}
+.btn{ width: 90px; height: 35px; border: 2px solid; color: #ca3c3c; background: transparent; border-radius: 10px; font:400 16px istok,sans-serif; }
+
+.wrap-2{ background: #666; color: #fff;}
+.video{ padding: 200px 0;}
+.video .button button{ background: transparent; border: none; font-size: 150px; color: inherit; margin-right: 40px; }
+.video .text p{ font-size: 60px; color: inherit;}
+.video .text a{ color: #ca3c3c; }
+
+.wrap-3{ background: #ca3c3c; color: #fff; padding: 20px 0;}
+h2{ font-size: 72px; line-height: 60px; border-bottom: 10px solid;}
+.wrap-3 h3{ font-size: 16px; line-height: 30px; margin-bottom: 10px;}
+.wrap-3 P{ font-size: 14px; line-height: 22px;}
+.circle{ min-width: 100px; line-height: 96px; border: 2px solid; border-radius: 50px; font-size: 36px; text-align: center; margin-right: 30px;}
+.wrap-3 .flex{ margin: 30px 0;}
+.wrap-3 h2{ margin-top: 30px;}
+
+.wrap-4{ background: #fff; color: #ca3c3c; line-height: 150px; text-align: center; font-size: 36px;}
+
+.wrap-5{ background: #ebebeb; color: #363636; padding: 100px 0; }
+.wrap-5 .btn{ margin: 30px 10px 60px 0;}
+.btn.active{ background: #ca3c3c; color: #fff; border-color: #ca3c3c; }
+.work{ margin-bottom: 30px; position: relative; overflow: hidden;}
+.work img{ max-width: 100%; height: auto;}
+.work .over{ position: absolute; background: #fff; bottom: -100px; left: 0; right: 0; text-align: center; padding: 20px 0; transition: 0.5s;}
+.over h3{ color: #ca3c3c; font-size: 18px; line-height: 40px;}
+.over p{ font-size: 14px; color: #898989; line-height: 20px;}
+.work:hover .over{ bottom: 0;}
+
+.seemore{ width: 32px; line-height: 32px; background: #ca3c3c; border-radius: 50%; color: #fff; border: none; font-size: 24px;}
+
+.wrap-6{ background: #666; color: #fff; padding: 50px 0;}
+.reviews{ text-align: center;}
+.reviews .review{ display: none;}
+.reviews .review.active{ display: block; }
+.review blockquote{ font-size: 36px; line-height: 41px;}
+.reviews img{ border-radius: 50%; margin: 10px 0;}
+.reviews figcaption{ font-size: 16px; font-weight: 400;}
+.pager{ display: flex; justify-content: center;}
+.pager li{margin: 5px; }
+.pager li a{ display: block; border: 2px solid #fff; width: 10px; height: 10px; border-radius: 50%;}
+.pager li a.active{ background: #fff;}
+
+.wrap-7{ background: #fff; color: #363636; padding: 100px 0;}
+.team { position: relative; margin-top: 80px; }
+.social{ position: absolute; right: 60px;  top: 60px;}
+.social ul{ display: flex;}
+.social ul li{ margin-left: 10px;}
+.social ul li a{ display: block; width: 50px; line-height: 50px; border-radius: 50%; background: #ca3c3c; color: #fff; text-align: center; font-size: 24px; }
+.gap{ margin: 50px 0 50px 100px; }
+.gap h3{ color: #ca3c3c; font-size: 18px; }
+.gap small{ color: #898989; font-size: 14px;}
+.gap p{ color: #363636; font-size: 14px; margin-top: 30px; }
+
+.wrap-8{ padding: 80px 0; background: #666; color: #fff; text-align: center; }
+.wrap-8 span.fa{ font-size: 72px; }
+.wrap-8 p{ font-size: 72px; }
+.wrap-8 { font-size: 18px; }
+
+.wrap-9{ background: #ffff; color: #363636; padding: 100px 0;}
+.chart{ aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;}
+
+.wrap-10{ background: #ca3c3c; color: #fff; padding: 23px 0 22px;}
+.wrap-10 input{ width: 100%; height: 35px; background: transparent; border: none; font-size: 36px; font-family: inherit; font-weight: 100; color: #fff;}
+.wrap-10 input::placeholder{ color: #fff;}
+.wrap-10 button{ background: #fff; color: #ca3c3c; float: right; }
+
+.wrap-11{ background: #7f7f7f; color: #fff; padding: 28px 0 27px;}
+.box{ background: #a6a6a6; line-height: 95px; font-size: 24px; text-align: center;}
+
+.wrap-12{ background: #ebebeb; color: #363636; padding: 100px 0;}
+.wrap-12{ margin: 42px 0 29px; }
+.soc{ display: flex;}
+.soc li{margin-right: 20px; }
+.soc li a{ display: block; color: #ca3c3c;}
+.wrap-12 label{ display: block; border: 2px solid #363636; margin: 15px 0; padding: 17px; font-weight: 700;}
+.wrap-12 .col-8 label{ margin: 13.5px 17px; }
+.wrap-12 label input{ border: none; background: transparent;}
+.wrap-12 label textarea{ border: none; background: transparent; vertical-align: top; resize: none; height: 49px;}
+.wrap-12 button{ margin: 15px 0; display: block; width: 100%; height: 80px; background: #fff; border: none; border-radius: 10px; color: #ca3c3c; font-size: 16px; font-family: inherit;}
+.wrap-12 button span.fa{ font-size: 36px; vertical-align: middle;}
+
+.wrap-13{ background: #252525; columns: #fff; padding: 50px 0; text-align: center; }
+
+.drop{}
+  .drop::before{
+    content: '';
+    display: inline-block;
+    border: 6px solid;
+    border-color: #bbb transparent transparent;
+    margin: -3px 3px;
+  }
+  .dropdown{ position: absolute; background: #222; display: none;}
+
+.modelform{ display: none;}
+.overlay{ position: fixed;  background: rgba(0 0 0 / 75% ); z-index: 100; left: 0; right: 0; top: 0;bottom: 0;}
+  .popover{ position: fixed; background: #fff; padding: 20px; border-radius: 10px; left: 50%; top: 100px; transform: translateX(-50%); max-width: 600px; z-index: 101;}
+  .popover .close{ position: absolute; right: 10px; top: 10px; border: none; font-size: 20px; }
+  .popover form > div{ margin: 1rem 0;}
+
+  
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+   
+<body>
+    <header class="wrap-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <h1><a href="">IDDO</a></h1>
+                </div>
+                <div class="col-8">
+                    <nav class="pr">
+                        <div class="nav">
+                        <ul>
+                            <li><a href="">Home</a></li>
+                            <li><a class="drop" href="">Services</a>
+                                <div class="dropdown">
+                                <ul>
+                                    <li><a href="">Laptop</a></li>
+                                    <li><a href="">Mobile</a></li>
+                                    <li><a href="">Tab</a></li>
+                                </ul>
+                            </div>
+                                </li>
+                            
+                            <li><a class="drop" href="">Portfolio</a>
+                                <div class="dropdown">
+                                <ul>
+                                    <li><a href="">Developer</a></li>
+                                    <li><a href="">Designer</a></li>
+                                    <li><a href="">Graduate</a></li>
+                                </ul>
+                            </div>
+                            </li>
+                            <li><a href="">About</a></li>
+                            <li><a href="">Contact</a></li>
+                        </ul>
+        </div>
+                    </nav>
+                </div>
+                <div class="col-2 flex justify-right align-center">
+                    <button class="btn signup">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="wrap-2">
+        <div class="container">
+            <div class="video flex align-center">
+                <div class="button"><button><span class="fa fa-play-circle-o"></span></button></div>
+                <div class="text">
+                    <p>Let me show you a few things</p>
+                    <a href="" class="pr">Click to play video</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="wrap-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <h2>OUR SERVICES</h2>
+                        </div>
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="flex">
+                                        <div class="circle"><span class="fa fa-cloud"></span></div>
+                                        <div class="text"><h3>FEATURE 1</h3><P>Lorem ipsum dolor sit amet consectetur adipisicing elit.</P></div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="flex">
+                                        <div class="circle"><span class="fa fa-cutlery"></span></div>
+                                        <div class="text"><h3>FEATURE 1</h3><P>Lorem ipsum dolor sit amet consectetur adipisicing elit.</P></div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="flex">
+                                        <div class="circle"><span class="fa fa-bolt"></span></div>
+                                        <div class="text"><h3>FEATURE 1</h3><P>Lorem ipsum dolor sit amet consectetur adipisicing elit.</P></div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="flex">
+                                        <div class="circle"><span class="fa fa-gavel"></span></div>
+                                        <div class="text"><h3>FEATURE 1</h3><P>Lorem ipsum dolor sit amet consectetur adipisicing elit.</P></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    
+    <div class="wrap-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-2"><span class="fa fa-lightbulb-o"></span></div>
+                <div class="col-2"><span class="fa fa-globe"></span></div>
+                <div class="col-2"><span class="fa fa-camera-retro"></span></div>
+                <div class="col-2"><span class="fa fa-wrench"></span></div>
+                <div class="col-2"><span class="fa fa-microphone"></span></div>
+                <div class="col-2"><span class="fa fa-money"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="wrap-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h2>OUR WORKS.</h2>
+                    <button class="btn active">All</button><button class="btn">Website</button><button class="btn">Branding</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="work">
+                        <img src="image/work1.jpg" alt="" width="370" height="370" loading="lazy">
+                        <div class="over">
+                            <h3>PROJECT NAME</h3>
+                            <P>designed by | Author</P>
+                      </div>
+                    </div>
+                </div>
+           
+                <div class="col-4">
+                    <div class="work">
+                        <img src="image/work1.jpg" alt="" width="370" height="370" loading="lazy">
+                        <div class="over">
+                            <h3>PROJECT NAME</h3>
+                            <P>designed by | Author</P>
+                    </div>
+                </div>
+            </div>
+                <div class="col-4">
+                    <div class="work">
+                        <img src="image/work1.jpg" alt="" width="370" height="370" loading="lazy">
+                        <div class="over">
+                            <h3>PROJECT NAME</h3>
+                            <P>designed by | Author</P>
+                    </div>
+                </div>
+            </div>
+                <div class="col-4">
+                    <div class="work">
+                        <img src="image/work1.jpg" alt="" width="370" height="370" loading="lazy">
+                        <div class="over">
+                            <h3>PROJECT NAME</h3>
+                            <P>designed by | Author</P>
+                    </div>
+                </div>
+            </div>
+                <div class="col-4">
+                    <div class="work">
+                        <img src="image/work1.jpg" alt="" width="370" height="370" loading="lazy">
+                        <div class="over"> 
+                            <h3>PROJECT NAME</h3>
+                            <P>designed by | Author</P>
+                    </div>
+                </div>
+            </div>
+                <div class="col-4">
+                    <div class="work">
+                        <img src="image/work1.jpg" alt="" width="370" height="370" loading="lazy">
+                        <div class="over">
+                            <h3>PROJECT NAME</h3>
+                            <P>designed by | Author</P>
+                    </div>
+                </div>
+            </div>
+            <button aria-label="See More" class="seemore fa fa-plus"></button>
+        </div>
+    </div>
+    </section> 
+  <div class="wrap-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="reviews">
+                    <div class="review active">
+                        <blockquote>
+                            <p><q>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt alias, tempore architecto tempora</q></p>
+                            <figure>
+                                <img src="image/singh.jpg" alt="deepak">
+                                <figcaption>DEEPAK SINGH</figcaption>
+                            </figure>
+                        </blockquote>
+                    </div>
+                    <div class="review">
+                        <blockquote>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt alias, tempore architecto tempora</p>
+                            <figure>
+                                <img src="image/singh.jpg" alt="deepak">
+                                <figcaption>DEEPAK SINGH</figcaption>
+                            </figure>
+                        </blockquote>
+                </div>
+                <div class="review">
+                    <blockquote>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt alias, tempore architecto tempora</p>
+                        <figure>
+                            <img src="image/singh.jpg" alt="deepak">
+                            <figcaption>DEEPAK SINGH</figcaption>
+                        </figure>
+                    </blockquote>
+            </div>
+            <ul class="pager">
+                <li><a class="active" aria-label="1" href=""></a></li>
+                <li><a href="" aria-label="2"></a></li>
+                <li><a href="" aria-label="3"></a></li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+  </div>
+  </div>
+   <section class="wrap-7">
+        <div class="container">
+            <div class="row">
+                <div class="col-4"><h2>OUR TEAM.</h2></div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="team">
+                        <img src="image/team1.jpg" alt="team">
+                        <div class="social">
+                            <ul>
+                                <li><a aria-label="twitter" href=""><span class="fa fa-twitter"></span></a></li>
+                                <li><a aria-label="facebook" href=""><span class="fa fa-facebook"></span></a></li>
+                                <li><a aria-label="instagram" href=""><span class="fa fa-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="gap">
+                            <h3>MICHAEL JOE</h3>
+                            <small>CEO &amp; Founder</small>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam dolorum ullam ab architecto, numquam, illo dolor, perferendis sunt cum debitis atque qui voluptas consequatur vel libero maxime ex quia dolores.</p>
+                        </div>             
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="team">
+                        <img src="image/team1.jpg" alt="team">
+                        <div class="social">
+                            <ul>
+                                <li><a aria-label="twitter" href=""><span class="fa fa-twitter"></span></a></li>
+                                <li><a aria-label="facebook" href=""><span class="fa fa-facebook"></span></a></li>
+                                <li><a aria-label="instagram" href=""><span class="fa fa-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="gap">
+                            <h3>MICHAEL JOE</h3>
+                            <small>CEO &amp; Founder</small>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam dolorum ullam ab architecto, numquam, illo dolor, perferendis sunt cum debitis atque qui voluptas consequatur vel libero maxime ex quia dolores.</p>
+                        </div>             
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="team">
+                        <img src="image/team1.jpg" alt="team">
+                        <div class="social">
+                            <ul>
+                                <li><a aria-label="twitter" href=""><span class="fa fa-twitter"></span></a></li>
+                                <li><a aria-label="facebook" href=""><span class="fa fa-facebook"></span></a></li>
+                                <li><a aria-label="instagram" href=""><span class="fa fa-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="gap">
+                            <h3>MICHAEL JOE</h3>
+                            <small>CEO &amp; Founder</small>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam dolorum ullam ab architecto, numquam, illo dolor, perferendis sunt cum debitis atque qui voluptas consequatur vel libero maxime ex quia dolores.</p>
+                        </div>             
+                    </div>
+                </div>
+            </div>
+            <button aria-label="See More" class="seemore fa fa-plus"></button>
+        </div>
+   </section>
+   <div class="wrap-8">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <span class="fa fa-gift"></span>
+                <p>2009</p>
+                <small>PERSPICIATIS</small>
+            </div>
+            <div class="col-3">
+                <span class="fa fa-comments-o"></span>
+                <p>13,562</p>
+                <small>COMMENTS</small>
+            </div>
+            <div class="col-3">
+                <span class="fa fa-coffee"></span>
+                <p>8,710</p>
+                <small>COFFE CUPS</small>
+            </div>
+            <div class="col-3">
+                <span class="fa fa-trophy"></span>
+                <p>715</p>
+                <small>AWARDS</small>
+            </div>
+        </div>
+    </div>
+   </div>
+ <section class="wrap-9">
+    <div class="container">
+        <div class="row">
+            <div class="col-4"><h2>OUR SKILLS</h2></div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-3"><div class="chart">Doughnut</div></div>
+                    <div class="col-3"><div class="chart">Doughnut</div></div>
+                    <div class="col-3"><div class="chart">Doughnut</div></div>
+                    <div class="col-3"><div class="chart">Doughnut</div></div>
+                </div>
+                <div class="gap">
+                    <h3>SOMETHING ABOUT OUR SKILLS</h3>
+                    <P>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit nemo, totam neque, consequatur, minima dicta doloremque explicabo nam quisquam harum rem molestiae eaque. Doloremque fuga nemo qui velit id iste? Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ratione, sequi, molestiae quos ut dolorum maxime quae animi a adipisci totam, culpa porro doloribus libero laborum tempore aut tempora aperiam!</P>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, corporis amet. Eos accusamus sunt architecto voluptatem pariatur laborum quaerat perspiciatis voluptate nulla laudantium natus cumque, mollitia harum iusto amet dolor.</p>
+                </div>
+            </div>
+            <div class="col-4">
+                ACCORDION
+            </div>
+        </div>
+    </div>
+ </section>
+ <div class="wrap-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <form action="/">
+                    <div class="row">
+                        <div class="col-8"><input type="email" required placeholder="Enter your email here..." aria-label="Email"></div>
+                        <div class="col-4"><button class="btn">Subscribe</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</div>
+ <div class="wrap-11">
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-2"><div class="box"><span class="fa fa-wordpress"></span> Wordpress</div></div>
+            <div class="col-2"><div class="box"><span class="fa fa-wordpress"></span> Wordpress</div></div>
+            <div class="col-2"><div class="box"><span class="fa fa-wordpress"></span> Wordpress</div></div>
+            <div class="col-2"><div class="box"><span class="fa fa-wordpress"></span> Wordpress</div></div>
+            <div class="col-2"><div class="box"><span class="fa fa-wordpress"></span> Wordpress</div></div>
+        </div>
+    </div>
+</div>
+<section class="wrap-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <h2>CONTACT US.</h2>
+                <address>
+                    123A Building,Road Street Oriando Distric US
+                    +01234 567 89 | Contact@book.com
+                </address>
+                <ul class="soc">
+                    <li><a href="" aria-label="twitter"><span class="fa fa-twitter"></span></a></li>
+                    <li><a href="" aria-label="facebook"><span class="fa fa-facebook"></span></a></li>
+                    <li><a href="" aria-label="google"><span class="fa fa-google-plus"></span></a></li>
+                    <li><a href="" aria-label="pinterest"><span class="fa fa-pinterest"></span></a></li>
+                    <li><a href="" aria-label="instagram"><span class="fa fa-instagram"></span></a></li>
+                    <li><a href="" aria-label="youtube"><span class="fa fa-youtube"></span></a></li>
+                    <li><a href="" aria-label="skype"><span class="fa fa-skype"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <form action="/">
+            <div class="row">
+                <div class="col-4"><label><span class="fa fa-envelope"></span> EMAIL <input type="email" required></label></div>
+                <div class="col-4"><label><span class="fa fa-user"></span> NAME <input type="text" required></label></div>
+                <div class="col-8"><label><span class="fa fa-pencil"></span> MESSAGE <textarea rows="3" cols="40" required></textarea></label></div>
+                <div class="col-4"><button><span class="fa fa-check-circle-o"> Submit</span></button></div>
+            </div>
+        </form>
+    </div>
+</section>
+<footer class="wrap-13">
+    <div class="container">
+        <h3>IDDO</h3>
+        <P>&copy; 2014 IDDO.All rights reservered.</P>
+        <p>Designed by DZOAN.</p>
+        <a href=""><span class="fa fa-chevron-up"></span></a>
+    </div>
+</footer>
+<div class="modelform">
+    <button class="close" aria-label="Close">&times;</button>
+    <form action="">
+      <div><label>Name: <input type="text" required></label></div>
+      <div><label>Password: <input type="password" required></label></div>
+      <div><button class="btn">Submit</button></div>
+    </form>
+  </div>
+
+<script>
+
+     $(".nav ul li a.drop").click(function(e){
+      e.preventDefault();
+
+      if( $(this).next(".dropdown").is(":hidden")){
+        $(".dropdown").slideUp();
+        $(this).next(".dropdown").slideDown();
+      }
+      else{
+        $(".dropdown").slideUp();
+      }
+
+    });
+    $(".nav ul li a.drop").focusout(function(){
+      $(".dropdown").slideUp();
+    })
+
+    $(".signup").click(function(){
+      $("body").append(`<div class="overlay"></div>`);
+      $("body").append(`<div class="popover"></div>`);
+      $(".popover").append($(".modelform").html());
+
+      function _close(){$(".popover, .overlay").remove();}
+
+      $(".popover .close, .overlay").click(function(){_close()});
+      $(window).keyup(function(e){ if(e.which==27){_close()}})
+
+    });
+
+</script>
+</body>
+</html>
